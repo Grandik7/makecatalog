@@ -1,0 +1,81 @@
+\documentclass[a4paper, 12pt, onecolumn]{book}
+
+\usepackage{helvet}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage[table]{xcolor}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{csvsimple}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[margin=0cm]{geometry}
+\usepackage{datatool}
+\DTLsetseparator{,}
+
+\renewcommand{\familydefault}{\sfdefault}
+\begin{document}
+
+\thispagestyle{empty}										% Odstráni číslo strany	
+
+\definecolor{profiyellow}{rgb}{1.0, 0.87, 0.0}
+\definecolor{silver}{rgb}{0.75, 0.75, 0.75}
+\definecolor{dimgray}{rgb}{0.41, 0.41, 0.41}
+
+%% ============================== VARIABLES ============================== %% 
+\name=name
+\marking=marking
+\variantscount=3
+\newcommand{\path}{}
+
+%% ============================== TOP and BOTTOM ============================== %%
+\begin{figure}[t!]
+	\includegraphics[width=\paperwidth]{top.pdf}
+\end{figure}
+
+
+\begin{figure}[b!]
+	\includegraphics[width=\paperwidth]{bottom.pdf}
+\end{figure} 
+
+%% ============================== NAME ============================== %% 
+\begin{textblock*}{10cm}(10cm, 0.7cm) 	% {block width} (coords) 
+	\centering
+  {\fontsize{30}{0} \selectfont \textbf{ \name }}
+\end{textblock*}
+
+%% ============================== IMAGE ============================== %% 
+\begin{textblock*}{7cm}(1cm, 3.5cm)
+	\includegraphics[width=7cm]{img.jpg}
+\end{textblock*}
+
+\begin{textblock*}{7cm}(1cm, 11cm)
+	\includegraphics[width=7cm]{curve.PNG}
+\end{textblock*}
+
+%% ============================== TABLE of DATA ============================== %%
+\setlength{\arrayrulewidth}{0.3mm}
+\setlength{\extrarowheight}{0.3cm}
+
+\begin{textblock*}{11cm}(10cm, 3.5cm) 												% {block width} (coords)
+{\rowcolors{3}{gray!10}{white}
+	\input{TableOfData.tex}
+}
+\end{textblock*}
+
+%% ============================== TABLE of VARIANTS ============================== %%
+\setlength{\arrayrulewidth}{0.3mm}
+\setlength{\extrarowheight}{1mm}
+
+\begin{textblock*}{18cm}(1.5cm, 20cm) 								% {block width} (coords)
+	\centering
+	{\rowcolors{3}{profiyellow}{profiyellow!50}
+		\input{TableOfVariants.tex}
+	}
+\end{textblock*}
+
+
+\end{document}
